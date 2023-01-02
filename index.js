@@ -3,16 +3,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const port = 3000 || process.env.PORT
 
-const presents = [
-    {
-        id: 1,
-        name: 'Test name',
-        description: 'Test description',
-        url: 'test url',
-        image: 'test image',
-        isReserved: false,
-    }
-]
+const presents = []
 
 app.use(cors())
 app.use(bodyParser.json()) // for parsing application/json
@@ -22,6 +13,12 @@ app.post('/presents', (req, res, next) => {
     if (!present.name) {
         res.status(400).json({message: 'Name is not defined'})
         return
+    }
+    if (!present.description) {
+        present.description = ''
+    }
+    if (!present.url) {
+        present.url = ''
     }
     present.id = Date.now()
     present.isReserved = false
@@ -55,5 +52,3 @@ app.put('/presents', (req, res) => {
 app.listen(port, () => {
     console.log(`servers started on port ${port}`)
 })
-
-module.exports = app;
