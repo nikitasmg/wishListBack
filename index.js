@@ -51,14 +51,6 @@ const presents = [
         url: '',
         imageUrl: 'https://cdn1.ozone.ru/s3/multimedia-7/c1000/6088766143.jpg',
         isReserved: false,
-    },
-    {
-        id: 1,
-        name: '',
-        description: '',
-        url: '',
-        imageUrl: '',
-        isReserved: false,
     }
 ]
 
