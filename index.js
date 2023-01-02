@@ -1,6 +1,7 @@
 const app = require('express')()
 const bodyParser = require('body-parser')
-const port = 3000
+const cors = require('cors')
+const port = 3000 || process.env.PORT
 
 const presents = [
     {
@@ -13,7 +14,7 @@ const presents = [
     }
 ]
 
-
+app.use(cors())
 app.use(bodyParser.json()) // for parsing application/json
 
 app.post('/presents', (req, res, next) => {
