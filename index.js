@@ -7,7 +7,7 @@ const presents = [
     {
         id: 1,
         name: 'Набор чашек для чая',
-        description: 'Главное, чтоб двойное стекло. Примерно как на примере',
+        description: 'Главное, чтоб двойное стекло. Желательно набор из 4-6 штук. По виду можно как на примере.',
         url: 'https://www.ozon.ru/product/nabor-chaynyy-kofeynaya-para-greenbrown-aromatnyy-chay-prozrachnoe-steklo-250-ml-na-2-pers-815569388/?asb=t%252FXYssOmqX4ok5dyhZRAFTpE%252BnZVnEc57UHlQU%252BmTnrgGoMYRMFRKjdlvXSrNlpm&asb2=q64L1GdKL44_dEZBQHq6vALlKO0j_XSLm3BW9bQQ6S6A9LDf2qJdxfYFnX-OZrX0vhN-7V6Hxax14jMML3m80nhC0HqLPYSnfhEdDrfGANpeui6pYEaCjAE3nBCqRmvP116iphrG-pFcPQr3zyIkVqmIf3tdsZXhMgBn5gmuyzYLMOOIRx5EShz72BmAMeK-&avtc=1&avte=2&avts=1672691054&keywords=чашки+для+чая&sh=LC_P8SNDkQ',
         imageUrl: 'https://cdn1.ozone.ru/s3/multimedia-x/c1000/6496148505.jpg',
         isReserved: false,
@@ -31,7 +31,7 @@ const presents = [
     {
         id: 4,
         name: 'Нож или набор',
-        description: 'Было бы круто если samura. Ссылка просто для примера. Если че возьму денег откупиться ))',
+        description: 'Было бы круто если samura. Если че возьму денег откупиться ))',
         url: '',
         imageUrl: 'https://cdn1.ozone.ru/s3/multimedia-3/c1000/6306418755.jpg',
         isReserved: false,
@@ -39,15 +39,15 @@ const presents = [
     {
         id: 5,
         name: 'Чай или набор',
-        description: 'Можно разный. Все китайское (тигуанинь, пуэр, габба и тд)',
+        description: 'Можно разный. Все китайское (тигуанинь, габба, пуэр и тд). Расположил по важности))',
         url: '',
         imageUrl: 'https://cdn1.ozone.ru/s3/multimedia-u/c1000/6065886654.jpg',
         isReserved: false,
     },
     {
-        id: 7,
+        id: 6,
         name: 'Мышка',
-        description: 'Что-то более игровой формы. Важно чтоб подключалась к mac. Можно проводную можно безпроводную (Но только usb type-c плиз). Только не плоску))',
+        description: 'Что-то более игровой формы. Важно чтоб подключалась к mac. Можно проводную, можно безпроводную (Но только c usb type-c плиз). И не плоскую))',
         url: '',
         imageUrl: 'https://cdn1.ozone.ru/s3/multimedia-7/c1000/6088766143.jpg',
         isReserved: false,
@@ -95,11 +95,7 @@ app.put('/presents', (req, res) => {
         res.status(400).json({message: `Present with id - ${id} was not found`})
         return
     }
-    if (isReserved) {
-        target.isReserved = isReserved
-    } else {
-        target.isReserved = true
-    }
+    target.isReserved = isReserved
     res.json(target)
 })
 
