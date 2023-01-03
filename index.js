@@ -51,6 +51,14 @@ const presents = [
         url: '',
         imageUrl: 'https://cdn1.ozone.ru/s3/multimedia-7/c1000/6088766143.jpg',
         isReserved: false,
+    },
+    {
+        id: 7,
+        name: 'Зубная щетка',
+        description: 'Xiaomi, ультрозвуковая, можно как по ссылке, можно что-то похожее))',
+        url: 'https://www.ozon.ru/product/elektricheskaya-zubnaya-shchetka-soocas-x3u-chernaya-dorozhnaya-portativnaya-zubnaya-shchetka-s-183987220/?advert=vVjgx-YRLEhl43D_K-u1kaHxCEF76qfOzAsSEXmQ6DDxP5CFpVZkwYKvgW3t6BEYtipndkpn_dxbNWj4rVtVRmN8GI8qEoqHAiJ08DCam0QItCEtjeUMuwsiiZZIsSDxwzjZKgkicbGtfEpVdnFwuROS9BoSdGKy3mnINCUfrn2LuBtPjIzWzCvhXA-B-6wEsCiziwiMTSfXOsvtgOUxFY2tMIMkRM_9K7g3IDR65DTabLeFpGVjRC_XS3lEghAO-ZL-grxWk4_W8eI3hHga_uHLn7JNnVfjZuz_JXB0C47L93YZaIHpqwZaA09SbacL_UOwzpcEb3fk6rdhPPyT0UgX2E3uy3SeWEhwl8TZqro2Ru7C-uhHO_9_nuxDwyca_IiOXS6ROPc0-Bfccv8Memt-uV-5TvF1OcinGSNPEoGhwzIh5UXWI71Ks0NckZK1Xw2-LLiZvItS4pJ6-c0L-QfWb084bBYLEkhT-cT9cQrFTzWEiD6lMr3nNxlh1TvoI599LYWDe-42-KuAuup33eNbl4g95Fr2tESu8zVJgdqissfAu5fff3s1fY8db0j1nEFl3ycwmZ5gCVB1szv7LqApklvBf8sYXKTDBpPjJ9qCxd1j471fLp6e5f3OcYCPeVnBHAttGfLqBlWiZB__jvkYFQM5A3KO6TLFnUrp0ozp5T8j4qhMSlxPIDToB75HG2OQziEyCgZmjD5tNea2EbsK9jSjQ-MzYZuCbNjJtqj7NtYom8qF-IHy3Ip7itnX&avtc=1&avte=4&avts=1672745498&keywords=soocas+x3u&sh=LC_P8T7B7g',
+        imageUrl: 'https://cdn1.ozone.ru/s3/multimedia-4/c1000/6416858800.jpg',
+        isReserved: false,
     }
 ]
 
@@ -95,8 +103,12 @@ app.put('/presents', (req, res) => {
         res.status(400).json({message: `Present with id - ${id} was not found`})
         return
     }
+    if (isReserved && target.isReserved) {
+        res.status(400).json({message: 'Этот подарок уже занят'})
+        return
+    }
     target.isReserved = isReserved
-    res.json(target)
+    res.json(presents)
 })
 
 
